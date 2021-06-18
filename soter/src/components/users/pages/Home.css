@@ -1,0 +1,27 @@
+img{
+    height: 150px;
+    width: 160px;
+    background-color: transparent;
+    right: 0;
+    position: absolute;
+    top:12%
+}
+.logo{
+    float: right;
+    font-size: 30px;
+    background-color:transparent;
+    right: 0;
+    position: absolute;
+    top:12%
+}   
+
+.title{
+    font-size:  50px;
+    top:12%;
+    color:white;
+    top:0%;
+    position: center;
+    justify-content: center;
+    background-color: transparent;
+    
+}

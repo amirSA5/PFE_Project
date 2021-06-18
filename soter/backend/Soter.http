@@ -1,0 +1,25 @@
+POST http://localhost:3001/app/admin
+Content-Type: application/json
+
+{
+    "Username_Admin":"ali akrout",
+    "mdp":"ali akrout",
+    "FirstName":"Samar",
+    "LastName":"Affes",
+    "Cin":"1111232146",
+    "Phone_Number":"51037170",
+    "Email":"affes.samar7@gmail.com",
+    "Occupation":"Etudiante",
+    "Password":"motdepasse",
+    "Nom_client":"ahmed",
+    "Marque_et_Type_du_Véhicule":"tesla",
+    "Tél_client":"29213593",
+    "Immatriculation":"450tunis1",
+    "Proprieter_du_véhicule":"yessine",
+    "Compteur_KM_Véhicule":"20km",
+    "Tél_Proprieter":"aaaaa",
+    "Model_du_Groupe":"aaaaaaa",
+    "Lieu_intervention":"allmange",
+    "N_Série":"aaaaaaaa",
+    "Compteur_Horaire_Groupe":"aaaaaaaaaa"
+}
