@@ -122,6 +122,7 @@ export default function ListeUsers({data}) {
     },[values,search])
     return (
         <>
+        <Navbar />
         <div>
             <input type='text'className='search' placeholder='search' style={{color:'black'}}  value={search} onChange={e=>{updateSearch(e.target.value)}}  />
             
@@ -142,13 +143,13 @@ export default function ListeUsers({data}) {
             
             <tr >
                 
-            {show?<td className='input-fonts'><input type='text' placeholder='set new FirstName' value={values.FirstName} onChange={(e)=>setNewFirstName(e.target.value)} style={{color:'black'}}  /></td>:null }
-            {show?<td className='input-fonts'><input type='text' placeholder='set new LastName' value={values.LastName} onChange={(e)=>setNewLastName(e.target.value)} style={{color:'black'}} /></td>:null }                
-            {show?<td className='input-fonts'><input type='text' placeholder='set new Cin' value={values.Cin} onChange={(e)=>setNewCin(e.target.value)} style={{color:'black'}} /></td>:null }                
-            {show?<td className='input-fonts'><input type='text' placeholder='set new phone number' value={values.Phone_Number} onChange={(e)=>setNewPhone_Number(e.target.value)} style={{color:'black'}} /></td>:null }                
-            {show?<td className='input-fonts'><input type='text' placeholder='set new Email'value={values.Email} onChange={(e)=>setNewEmail(e.target.value)} style={{color:'black'}} /></td>:null }
-            {show?<td className='input-fonts'><input type='text' placeholder='set new Occupation' value={values.Occupation} onChange={(e)=>setNewOccupation(e.target.value)} style={{color:'black'}}/></td>:null }
-            {show?<td className='input-fonts'><input type='text' placeholder='set new password' value={values.Password} onChange={(e)=>setNewPassword(e.target.value)} style={{color:'black'}}/></td>:null }
+            {show?<td className='input-fonts'><input type='text' pattern='[A-Za-z]{3,30}' placeholder='set new FirstName' value={values.FirstName} onChange={(e)=>setNewFirstName(e.target.value)} style={{color:'black'}}  /></td>:null }
+            {show?<td className='input-fonts'><input type='text' pattern='[A-Za-z]{3,30}' placeholder='set new LastName' value={values.LastName} onChange={(e)=>setNewLastName(e.target.value)} style={{color:'black'}} /></td>:null }                
+            {show?<td className='input-fonts'><input type='text' pattern='^(1|0)[0-9]{7}' placeholder='set new Cin' value={values.Cin} onChange={(e)=>setNewCin(e.target.value)} style={{color:'black'}} /></td>:null }                
+            {show?<td className='input-fonts'><input type='text' pattern='^(2|3|4|5|7|9)[0-9]{7}' placeholder='set new phone number' value={values.Phone_Number} onChange={(e)=>setNewPhone_Number(e.target.value)} style={{color:'black'}} /></td>:null }                
+            {show?<td className='input-fonts'><input type='text'  placeholder='set new Email'value={values.Email} onChange={(e)=>setNewEmail(e.target.value)} style={{color:'black'}} /></td>:null }
+            {show?<td className='input-fonts'><input type='text'placeholder='set new Occupation' value={values.Occupation} onChange={(e)=>setNewOccupation(e.target.value)} style={{color:'black'}}/></td>:null }
+            {show?<td className='input-fonts'><input type='text' minlength="9" maxlength="12" placeholder='set new password' value={values.Password} onChange={(e)=>setNewPassword(e.target.value)} style={{color:'black'}}/></td>:null }
             </tr>
             
                 {dataList.map(data=><tr>

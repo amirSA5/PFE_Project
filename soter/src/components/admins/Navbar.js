@@ -29,7 +29,9 @@ function Navbar(){
             setDropdown(true);
         }
     };
-
+    const handleLogout = (e) =>{
+        history.push('/')
+    }
 
     return(
         <>
@@ -67,7 +69,7 @@ function Navbar(){
                             Clients List
                         </Link>
                         <li className='nav-item'>
-                        <Link to='/' className='nav-links' onClick={closeMobileMenu} >
+                        <Link to='/' className='nav-links' onClick={handleLogout} >
                             <i  class="fas fa-sign-out-alt"></i>
                         </Link>
                     </li>

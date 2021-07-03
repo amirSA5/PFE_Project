@@ -21,7 +21,10 @@ export default function ClientsList(data) {
     }])
     const [filter,setFilter]=useState([])
     const [show,setShow]=useState(true)
-    const [q, setQ] = useState("")
+    const [q, setQ] = useState('')
+    const [searchResult, setSearchResult] = useState(null)
+    const dataList = q.length > 0 ? searchResult : values;
+
     
     
 
@@ -60,13 +63,18 @@ export default function ClientsList(data) {
         })
     } ,[])  
     
-    
-      function search(data){
-        
-        return data.filter(
-            (data) => data.Nom_client.toLowerCase().indexOf(q)> -1); 
-        }
+    const updateSearch = value =>{
+        setQ(value)
+    }
 
+    useEffect(()=>{
+        const searchedList = values.filter(item=>
+            item.Tél_client.toLowerCase().includes(q)
+        )
+        setSearchResult(searchedList);
+        console.log(searchedList)
+
+    },[values,q])
       
     
   
@@ -74,12 +82,13 @@ export default function ClientsList(data) {
 
     return (
         <>
+        <Navbar />
         <div>
-            <input type='text'className='search' placeholder='search' style={{color:'black'}}  value={q} onChange={(e)=> setQ(e.target.value)}  />
+            <input type='text'className='search' placeholder='search' style={{color:'black'}}  value={q} onChange={e=>{updateSearch(e.target.value)}}  />
         </div>
         
         
-        <table cellPadding={50} cellSpacing={50}>
+        <table cellPadding={50} cellSpacing={50} data={dataList}>
             <thead >
                 <td >Nom client</td>
                 <td >Tél client</td>
@@ -95,7 +104,7 @@ export default function ClientsList(data) {
                 <td >Date</td>
             </thead>
             <tbody>
-                {values.map(data=>
+                {dataList.map(data=>
                 <tr>
                    {show? <td style={{color:'black'}} >{data.Nom_client}</td>:null}
                    {show?<td style={{color:'black'}}>{data.Tél_client}</td>:null}

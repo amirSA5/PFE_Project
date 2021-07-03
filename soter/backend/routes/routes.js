@@ -12,6 +12,7 @@ router.get('/liste',(request,response)=>{
     .then(data=>{
         response.json(data)
     })
+   
 })
 router.delete('/liste/:id', controller.delete)
 router.put('/liste/:id', controller.update)

@@ -6,11 +6,11 @@ import Navbar from '../Navbar'
 export default function Home() {
     return (
         <>
-
+          <Navbar />
           <div className="Home">
-          <div className='textalign'>
-                     <p>Société Tunisienne d’Équipement</p>
-                             <p>de Refrigeration</p>
+          <div  >
+                     <span className="HomeTitle"><p>Société Tunisienne d’Équipement</p>
+                             <p >de Refrigeration</p></span>
                             
              </div>
             <div className='logo'>

@@ -32,7 +32,7 @@ function Navbarusers(){
     return(
         <>
             <nav className='navbar'>
-                <Link to='/' className='navbar-logo'>
+                <Link to='/users' className='navbar-logo'>
                    SOTER <i className='fab fa-firstdraft' /> 
                 </Link>
                 <div className='menu-icon' onClick={handleClick}>
@@ -40,7 +40,7 @@ function Navbarusers(){
                 </div>
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <li className='nav-item'>
-                        <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                        <Link to='/users' className='nav-links' onClick={closeMobileMenu}>
                             Home
                         </Link>
                     </li>
@@ -56,7 +56,7 @@ function Navbarusers(){
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to='/FilesList' className='nav-links' onClick={closeMobileMenu}>
+                        <Link to='/FilesLists' className='nav-links' onClick={closeMobileMenu}>
                             Files List 
                         </Link>
                     </li>
@@ -65,7 +65,7 @@ function Navbarusers(){
                             Process  
                         </Link>
                         <li className='nav-item'>
-                        <Link to='/LogIn' className='nav-links' onClick={closeMobileMenu}>
+                        <Link to='/' className='nav-links' onClick={closeMobileMenu}>
                             <i class="fas fa-sign-out-alt"></i>
                         </Link>
                     </li>

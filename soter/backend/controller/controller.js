@@ -22,7 +22,25 @@ exports.post =(request,response) =>{
         Model_du_Groupe: request.body.Model_du_Groupe,
         Lieu_intervention: request.body.Lieu_intervention,
         N_Série: request.body.N_Série,
-        Compteur_Horaire_Groupe: request.body.Compteur_Horaire_Groupe
+        Compteur_Horaire_Groupe: request.body.Compteur_Horaire_Groupe,
+        Descriptif_du_problème: request.body.Descriptif_du_problème,
+        traveaux_demandé: request.body.traveaux_demandé,
+        Observations_complémentaires: request.body.Observations_complémentaires,
+        Garentie: request.body.Garentie,
+        Nom_Technicien: request.body.Nom_Technicien,
+        Diagnostique: request.body.Diagnostique,
+        travaille_a_realisé: request.body.travaille_a_realisé,
+        Moteur: request.body.Moteur,
+        Compteur: request.body.Compteur,
+        Filtre_a_eau: request.body.Filtre_a_eau,
+        NFiltre_a_eau: request.body.NFiltre_a_eau,
+        Thermostat: request.body.Thermostat,
+        Compressuer: request.body.Compressuer,
+        Condenseur: request.body.Condenseur,
+        NCondenseur: request.body.NCondenseur,
+        begin: request.body.begin,
+        Terminate: request.body.Terminate,
+        avis_Client: request.body.avis_Client,
     })
     Sdata.save()
     .then(data=>{

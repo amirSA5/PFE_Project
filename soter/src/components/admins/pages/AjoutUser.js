@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import './AjoutUser.css'
 import axios from 'axios'
+import validInfo from './Validinfo'
 
 
 
@@ -28,19 +29,27 @@ const AjoutUser = () =>{
     Model_du_Groupe:'null',
     Lieu_intervention:'null',
     N_Série:'null',
-    Compteur_Horaire_Groupe:'null'
+    Compteur_Horaire_Groupe:'null',
+    travaille:'null'
 
  
   });
+  const [errors,setErrors]=useState({})
+  const [isSubmitting,setIsSubmitting] = useState(false)
+
 
   const Change = e =>{
     const{name,value}= e.target
     setVal({...val, [name]:value})
   }
-  const Submit = e =>{
-    
+  const handleSubmit = e =>{
+        
     e.preventDefault();
-    alert('SAVED IN DATABASE');
+   
+
+};
+  const Submit = e =>{
+    e.preventDefault();
 
         const Valider = {
             Username_Admin : val.Username_Admin,
@@ -62,62 +71,76 @@ const AjoutUser = () =>{
             Compteur_KM_Véhicule :val.Compteur_KM_Véhicule,
             Model_du_Groupe :val.Model_du_Groupe,
             N_Série :val.N_Série,
-            Compteur_Horaire_Groupe :val.Compteur_Horaire_Groupe
+            Compteur_Horaire_Groupe :val.Compteur_Horaire_Groupe,
+            travaille:val.travaille
 
         }
+        
         axios.post('http://localhost:3001/app/admin', Valider)
             .then(response => console.log(response.data))
             console.log(Valider)
+
   };
+  
+  const validator = e =>{
+    setErrors(validInfo(val));
+  }
 
 
     return(
         
         <div className='form-content-right'>
             
-            <form className='form' onSubmit={Submit}>
+            <form className='form' onChange={(e)=>handleSubmit} onSubmit={Submit} >
                 <h1>Get Started !!!!!! Create User account by filling out the information below.</h1>
                 <div className='form-inputs'>
                     <label htmlFor='First_name' className='form-label'>
                     First Name
                     </label>
-                    <input id='FirstName' type='text' name='FirstName' className='form-input' placeholder='First Name' value={val.FirstName} onChange={Change} />
+                    {errors.FirstName &&<p>{errors.FirstName}</p>}
+                    <input id='FirstName' type='text' pattern="[A-Za-z]{3,30}"  name='FirstName' className='form-input' placeholder='First Name' value={val.FirstName} onChange={Change} onBlur={validator} />
+                    
                 </div>
                 <div className='form-inputs'>
                     <label htmlFor='LastName' className='form-label'>
                     Last Name
                     </label>
-                    <input id='LastName' type='text' name='LastName' className='form-input' placeholder='Last Name' value={val.LastName} onChange={Change} />
+                    {errors.LastName &&<p>{errors.LastName}</p>}
+                    <input id='LastName' type='text' pattern="[A-Za-z]{3,30}" name='LastName' className='form-input' placeholder='Last Name' value={val.LastName} onChange={Change} onBlur={validator} />
                 </div>
                 <div className='form-inputs'>
                     <label htmlFor='CIN' className='form-label'>
                     CIN
                     </label>
-                    <input id='CIN' type='text' name='Cin' className='form-input' placeholder='CIN' value={val.Cin} onChange={Change} />
+                    {errors.Cin &&<p>{errors.Cin}</p>}
+                    <input id='CIN' type='text' pattern="^(1|0)[0-9]{7}" name='Cin' className='form-input' placeholder='CIN' value={val.Cin} onChange={Change} onBlur={validator} />
                 </div>
                 <div className='form-inputs'>
                     <label htmlFor='Phone_Number' className='form-label'>
                     Phone Number
                     </label>
-                    <input id='Phone_Number' type='text' name='Phone_Number' className='form-input' placeholder='Phone Number' value={val.Phone_Number} onChange={Change} />
+                    {errors.Phone_Number &&<p>{errors.Phone_Number}</p>}
+                    <input id='Phone_Number' type='text' pattern="^(2|3|4|5|7|9)[0-9]{7}" name='Phone_Number' className='form-input' placeholder='Phone Number' value={val.Phone_Number} onChange={Change} onBlur={validator} />
                 </div>
                 <div className='form-inputs'>
                     <label htmlFor='Occupation' className='form-label'>
                     Occupation
                     </label>
-                    <input id='Occupation' type='text' name='Occupation' className='form-input' placeholder='Occupation' value={val.Occupation} onChange={Change} />
+                    {errors.Occupation &&<p>{errors.Occupation}</p>}
+                    <input id='Occupation' type='text' name='Occupation' className='form-input' placeholder='Occupation' value={val.Occupation} onChange={Change} onBlur={validator} />
                 </div>
                 <div className='form-inputs'>
                     <label htmlFor='email' className='form-label'>
                        Email
                     </label>
-                    <input id='email' type='email' name='Email' className='form-input' placeholder='Enter your email' value={val.Email} onChange={Change} />
+                    <input id='email' type='email' name='Email' className='form-input' placeholder='Enter your email' value={val.Email} onChange={Change} onBlur={validator} />
                 </div>
                 <div className='form-inputs'>
                     <label htmlFor='password' className='form-label'>
                         Password
                     </label>
-                    <input id='password' type='password' name='Password' className='form-input' placeholder='Enter your Password' value={val.Password} onChange={Change} />
+                    {errors.Password &&<p>{errors.Password}</p>}
+                    <input id='password' type='password' minlength="9" maxlength="12" name='Password' className='form-input' placeholder='Enter your Password' value={val.Password} onChange={Change} onBlur={validator} />
                 </div>
                 <button className='form-input-btn' type='submit' >Create</button>
                

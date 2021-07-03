@@ -63,11 +63,11 @@ const Formlogin = ({data}) =>{
             console.log(mdp)
             console.log(mdp.length)
             for (var i=0;i<cin.length;i++){
-                if((values.username===cin[i]&&values.password===Password[i])){
+                if((values.username===cin[i]&&values.password===Password[i])&&(values.username!=='null')){
                     var v = 1
                     break
                
-                } else if((values.username===Username_Admin[i]&&values.password===mdp[i])) {
+                } else if((values.username===Username_Admin[i]&&values.password===mdp[i])&&(values.username!=='null')) {
                     v=2
                     break
                 }else{
@@ -80,7 +80,7 @@ const Formlogin = ({data}) =>{
             }else if (v==2){
                 history.push('/admin')
             }else{
-                alert('wrong')
+                alert('Wrong Username or Password')
             }
         
           

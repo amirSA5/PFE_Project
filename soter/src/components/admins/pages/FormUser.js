@@ -13,7 +13,7 @@ const FormUser =()=>{
 
   return(
     <>
-
+      <Navbar />
       <div className='form-container'>
         <span className='close-btn'>x</span>
         <div className='form-content-left'>

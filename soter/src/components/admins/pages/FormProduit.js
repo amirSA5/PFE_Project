@@ -1,32 +1,30 @@
 import React from 'react'
-import './FormClient.css'
-import './AddClient.css'
+import './FormProduit.css'
+import './AjoutProduit.css'
 import Im from './photos/Thermo_King-logo-B8A45042FC-seeklogo.com.png'
-import AddClient from './AddClient'
-import Navbarusers from '../Navbarusers'
+import AjoutProduit from './AjoutProduit'
+import Navbar from '../Navbar'
 
 
-
-
-const FormClient =()=>{
+const FormProduit =()=>{
 
 
 
 
   return(
     <>
-      <Navbarusers />
+      <Navbar />
       <div className='form-container'>
         <span className='close-btn'>x</span>
         <div className='form-content-left'>
           <img src={Im} alt='' className='form-img' />
         </div>
         
-          <AddClient />
+          <AjoutProduit />
           
       </div>
     
     </>
   )
 }
-export default FormClient 
+export default FormProduit

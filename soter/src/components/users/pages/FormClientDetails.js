@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -14,6 +14,8 @@ import Review from './Review';
 import Demande from './Demande';
 import Ordre from './Ordre';
 import Prestation from './Prestation';
+import Navbarusers from '../Navbarusers'
+import ProcessDetails from './ProcessDetails';
 
 function Copyright() {
   return (
@@ -65,18 +67,73 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const steps = [ 'demande intervention ', 'ordre de mession', 'prestation'];
+const steps = [ 'demande intervention ', 'ordre de mession', 'prestation','Review'];
 
-function getStepContent(step) {
+
+const GetStepContent=(step) =>{
+    const [val,setVal] = useState({
+      Username_Admin:'null',
+      mdp:'null',
+      FirstName :'null',
+      LastName :'null',
+      Cin :'null',
+      Phone_Number :'null',
+      Email :'null',
+      Occupation :'null',
+      Password :'null',
+      Nom_client:'null',
+      Marque_et_Type_du_Véhicule:'null',
+      Tél_client:'null',
+      Immatriculation:'null',
+      Proprieter_du_véhicule:'null',
+      Compteur_KM_Véhicule:'null',
+      Tél_Proprieter:'null',
+      Model_du_Groupe:'null',
+      Lieu_intervention:'null',
+      N_Série:'null',
+      Compteur_Horaire_Groupe:'null',
+      travaille:'null',
+      Descriptif_du_problème:'',
+      traveaux_demandé:'',
+      Observations_complémentaires:'',
+      Garentie:'',
+      Nom_Technicien:'',
+      Diagnostique:'',
+      travaille_a_realisé:'',
+      Moteur:'',
+      Compteur:'',
+      Filtre_a_eau:'',
+      Thermostat:'',
+      Compressuer:'',
+      Condenseur:'',
+      begin:'',
+      Terminate:'',
+      avis_Client:'',
+    })
+    const handleChange = input => e =>{
+      setVal({[input]: e.target.value})
+      e.preventDefault()
+  }
   switch (step) {
     case 0:
-      return <Demande />;
+      return <Demande 
+            
+            
+              />;
+              
     case 1:
-      return <Ordre />;
+      return <Ordre
+               values={val}
+               onChange={value=>setVal(value)}
+                 />;
     case 2:
-      return <Prestation />;
-    case 3:
-        return <Review />
+      return <Prestation 
+              values={val}
+              onChange={value=>setVal(value)}
+              />;
+    case 3: return <Review values={val} />
+
+ 
     default:
       throw new Error('Unknown step');
   }
@@ -88,14 +145,19 @@ export default function Checkout() {
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
+    
   };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+  
+
+  
 
   return (
     <React.Fragment>
+      <Navbarusers />
       <CssBaseline />
       
       <main className={classes.layout}>
@@ -121,21 +183,14 @@ export default function Checkout() {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep)}
+                {GetStepContent(activeStep)}
                 <div className={classes.buttons}>
                   {activeStep !== 0 && (
-                    <Button onClick={handleBack} className={classes.button}>
+                    <Button onClick={handleBack} className={classes.button} style={{backgroundColor:'red'}}>
                       Back
                     </Button>
                   )}
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleNext}
-                    className={classes.button}
-                  >
-                    {activeStep === steps.length - 1 ? 'Place ' : 'Next'}
-                  </Button>
+                  
                 </div>
               </React.Fragment>
             )}
